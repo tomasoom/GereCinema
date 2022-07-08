@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2332bd96cb7b439694bd57fd12c5170e" Name="Diagram1" >
+        <EntityTypeShape EntityType="CinemaDB.Cliente" Width="1.5" PointX="6.875" PointY="6.5" />
+        <EntityTypeShape EntityType="CinemaDB.Funcionario" Width="1.5" PointX="4.875" PointY="6.375" />
+        <EntityTypeShape EntityType="CinemaDB.Venda" Width="1.5" PointX="7.875" PointY="2.875" />
+        <EntityTypeShape EntityType="CinemaDB.Item" Width="1.5" PointX="3.625" PointY="1.5" />
+        <EntityTypeShape EntityType="CinemaDB.Sala" Width="1.5" PointX="10.375" PointY="7.125" />
+        <EntityTypeShape EntityType="CinemaDB.Filme" Width="1.5" PointX="12.625" PointY="7.5" />
+        <AssociationConnector Association="CinemaDB.ClienteVenda" />
+        <AssociationConnector Association="CinemaDB.FuncionarioVenda" />
+        <AssociationConnector Association="CinemaDB.ItemVenda" />
+        <EntityTypeShape EntityType="CinemaDB.Sessao" Width="1.5" PointX="13.375" PointY="2.875" IsExpanded="true" />
+        <AssociationConnector Association="CinemaDB.SalaSessao" />
+        <AssociationConnector Association="CinemaDB.FilmeSessao" />
+        <EntityTypeShape EntityType="CinemaDB.Lugar" Width="1.5" PointX="15.75" PointY="3" />
+        <AssociationConnector Association="CinemaDB.SessaoLugar" />
+        <EntityTypeShape EntityType="CinemaDB.Bilhete" Width="1.5" PointX="10.5" PointY="2.875" />
+        <AssociationConnector Association="CinemaDB.SessaoBilhete" />
+        <AssociationConnector Association="CinemaDB.BilheteVenda" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

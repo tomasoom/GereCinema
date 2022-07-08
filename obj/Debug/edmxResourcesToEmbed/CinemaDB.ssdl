@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CinemaDB.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="CinemaDBStoreContainer">
+    <EntitySet Name="Clientes" EntityType="CinemaDB.Store.Clientes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Funcionarios" EntityType="CinemaDB.Store.Funcionarios" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Vendas" EntityType="CinemaDB.Store.Vendas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Items" EntityType="CinemaDB.Store.Items" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Salas" EntityType="CinemaDB.Store.Salas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Filmes" EntityType="CinemaDB.Store.Filmes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Sessoes" EntityType="CinemaDB.Store.Sessoes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Lugares" EntityType="CinemaDB.Store.Lugares" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Bilhetes" EntityType="CinemaDB.Store.Bilhetes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ItemVenda" EntityType="CinemaDB.Store.ItemVenda" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="ClienteVenda" Association="CinemaDB.Store.ClienteVenda">
+      <End Role="Cliente" EntitySet="Clientes" />
+      <End Role="Venda" EntitySet="Vendas" />
+    </AssociationSet>
+    <AssociationSet Name="FuncionarioVenda" Association="CinemaDB.Store.FuncionarioVenda">
+      <End Role="Funcionario" EntitySet="Funcionarios" />
+      <End Role="Venda" EntitySet="Vendas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemVenda_Item" Association="CinemaDB.Store.FK_ItemVenda_Item">
+      <End Role="Item" EntitySet="Items" />
+      <End Role="ItemVenda" EntitySet="ItemVenda" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemVenda_Venda" Association="CinemaDB.Store.FK_ItemVenda_Venda">
+      <End Role="Venda" EntitySet="Vendas" />
+      <End Role="ItemVenda" EntitySet="ItemVenda" />
+    </AssociationSet>
+    <AssociationSet Name="SalaSessao" Association="CinemaDB.Store.SalaSessao">
+      <End Role="Sala" EntitySet="Salas" />
+      <End Role="Sessao" EntitySet="Sessoes" />
+    </AssociationSet>
+    <AssociationSet Name="FilmeSessao" Association="CinemaDB.Store.FilmeSessao">
+      <End Role="Filme" EntitySet="Filmes" />
+      <End Role="Sessao" EntitySet="Sessoes" />
+    </AssociationSet>
+    <AssociationSet Name="SessaoLugar" Association="CinemaDB.Store.SessaoLugar">
+      <End Role="Sessao" EntitySet="Sessoes" />
+      <End Role="Lugar" EntitySet="Lugares" />
+    </AssociationSet>
+    <AssociationSet Name="SessaoBilhete" Association="CinemaDB.Store.SessaoBilhete">
+      <End Role="Sessao" EntitySet="Sessoes" />
+      <End Role="Bilhete" EntitySet="Bilhetes" />
+    </AssociationSet>
+    <AssociationSet Name="BilheteVenda" Association="CinemaDB.Store.BilheteVenda">
+      <End Role="Bilhete" EntitySet="Bilhetes" />
+      <End Role="Venda" EntitySet="Vendas" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Clientes">
+    <Key>
+      <PropertyRef Name="IdCliente" />
+    </Key>
+    <Property Name="IdCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NIF" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Idade" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Funcionarios">
+    <Key>
+      <PropertyRef Name="IdFuncionario" />
+    </Key>
+    <Property Name="IdFuncionario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CodFuncionario" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Salario" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vendas">
+    <Key>
+      <PropertyRef Name="IdVenda" />
+    </Key>
+    <Property Name="IdVenda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClienteIdCliente" Type="int" Nullable="false" />
+    <Property Name="FuncionarioIdFuncionario" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Items">
+    <Key>
+      <PropertyRef Name="IdItem" />
+    </Key>
+    <Property Name="IdItem" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Preco" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Salas">
+    <Key>
+      <PropertyRef Name="IdSala" />
+    </Key>
+    <Property Name="IdSala" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NrSala" Type="int" Nullable="false" />
+    <Property Name="Comprimento" Type="int" Nullable="false" />
+    <Property Name="Largura" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Filmes">
+    <Key>
+      <PropertyRef Name="IdFilme" />
+    </Key>
+    <Property Name="IdFilme" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Titulo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Tipo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LimIdade" Type="int" Nullable="false" />
+    <Property Name="Duracao" Type="int" Nullable="false" />
+    <Property Name="Preco" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sessoes">
+    <Key>
+      <PropertyRef Name="IdSessao" />
+    </Key>
+    <Property Name="IdSessao" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DataInicio" Type="datetime" Nullable="false" />
+    <Property Name="SalaIdSala" Type="int" Nullable="false" />
+    <Property Name="FilmeIdFilme" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Lugares">
+    <Key>
+      <PropertyRef Name="IdLugar" />
+    </Key>
+    <Property Name="IdLugar" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="X" Type="int" Nullable="false" />
+    <Property Name="Y" Type="int" Nullable="false" />
+    <Property Name="SessaoIdSessao" Type="int" Nullable="false" />
+    <Property Name="Ocupado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Bilhetes">
+    <Key>
+      <PropertyRef Name="IdBilhete" />
+    </Key>
+    <Property Name="IdBilhete" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="X" Type="int" Nullable="false" />
+    <Property Name="Y" Type="int" Nullable="false" />
+    <Property Name="SessaoIdSessao" Type="int" Nullable="false" />
+    <Property Name="VendaIdVenda" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ItemVenda">
+    <Key>
+      <PropertyRef Name="Items_IdItem" />
+      <PropertyRef Name="Vendas_IdVenda" />
+    </Key>
+    <Property Name="Items_IdItem" Type="int" Nullable="false" />
+    <Property Name="Vendas_IdVenda" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="ClienteVenda">
+    <End Role="Cliente" Type="CinemaDB.Store.Clientes" Multiplicity="1" />
+    <End Role="Venda" Type="CinemaDB.Store.Vendas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="IdCliente" />
+      </Principal>
+      <Dependent Role="Venda">
+        <PropertyRef Name="ClienteIdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FuncionarioVenda">
+    <End Role="Funcionario" Type="CinemaDB.Store.Funcionarios" Multiplicity="1" />
+    <End Role="Venda" Type="CinemaDB.Store.Vendas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Funcionario">
+        <PropertyRef Name="IdFuncionario" />
+      </Principal>
+      <Dependent Role="Venda">
+        <PropertyRef Name="FuncionarioIdFuncionario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SalaSessao">
+    <End Role="Sala" Type="CinemaDB.Store.Salas" Multiplicity="1" />
+    <End Role="Sessao" Type="CinemaDB.Store.Sessoes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sala">
+        <PropertyRef Name="IdSala" />
+      </Principal>
+      <Dependent Role="Sessao">
+        <PropertyRef Name="SalaIdSala" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FilmeSessao">
+    <End Role="Filme" Type="CinemaDB.Store.Filmes" Multiplicity="1" />
+    <End Role="Sessao" Type="CinemaDB.Store.Sessoes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Filme">
+        <PropertyRef Name="IdFilme" />
+      </Principal>
+      <Dependent Role="Sessao">
+        <PropertyRef Name="FilmeIdFilme" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SessaoLugar">
+    <End Role="Sessao" Type="CinemaDB.Store.Sessoes" Multiplicity="1" />
+    <End Role="Lugar" Type="CinemaDB.Store.Lugares" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sessao">
+        <PropertyRef Name="IdSessao" />
+      </Principal>
+      <Dependent Role="Lugar">
+        <PropertyRef Name="SessaoIdSessao" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SessaoBilhete">
+    <End Role="Sessao" Type="CinemaDB.Store.Sessoes" Multiplicity="1" />
+    <End Role="Bilhete" Type="CinemaDB.Store.Bilhetes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sessao">
+        <PropertyRef Name="IdSessao" />
+      </Principal>
+      <Dependent Role="Bilhete">
+        <PropertyRef Name="SessaoIdSessao" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BilheteVenda">
+    <End Role="Bilhete" Type="CinemaDB.Store.Bilhetes" Multiplicity="*" />
+    <End Role="Venda" Type="CinemaDB.Store.Vendas" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Venda">
+        <PropertyRef Name="IdVenda" />
+      </Principal>
+      <Dependent Role="Bilhete">
+        <PropertyRef Name="VendaIdVenda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemVenda_Item">
+    <End Role="Item" Type="CinemaDB.Store.Items" Multiplicity="1" />
+    <End Role="ItemVenda" Type="CinemaDB.Store.ItemVenda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="IdItem" />
+      </Principal>
+      <Dependent Role="ItemVenda">
+        <PropertyRef Name="Items_IdItem" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemVenda_Venda">
+    <End Role="ItemVenda" Type="CinemaDB.Store.ItemVenda" Multiplicity="*" />
+    <End Role="Venda" Type="CinemaDB.Store.Vendas" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Venda">
+        <PropertyRef Name="IdVenda" />
+      </Principal>
+      <Dependent Role="ItemVenda">
+        <PropertyRef Name="Vendas_IdVenda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

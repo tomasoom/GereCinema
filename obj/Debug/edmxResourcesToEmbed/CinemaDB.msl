@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CinemaDBStoreContainer" CdmEntityContainer="CinemaDBContainer">
+    <EntitySetMapping Name="Clientes">
+      <EntityTypeMapping TypeName="IsTypeOf(CinemaDB.Cliente)">
+        <MappingFragment StoreEntitySet="Clientes">
+          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="NIF" ColumnName="NIF" />
+          <ScalarProperty Name="Idade" ColumnName="Idade" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Funcionarios">
+      <EntityTypeMapping TypeName="IsTypeOf(CinemaDB.Funcionario)">
+        <MappingFragment StoreEntitySet="Funcionarios">
+          <ScalarProperty Name="IdFuncionario" ColumnName="IdFuncionario" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="CodFuncionario" ColumnName="CodFuncionario" />
+          <ScalarProperty Name="Salario" ColumnName="Salario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vendas">
+      <EntityTypeMapping TypeName="IsTypeOf(CinemaDB.Venda)">
+        <MappingFragment StoreEntitySet="Vendas">
+          <ScalarProperty Name="IdVenda" ColumnName="IdVenda" />
+          <ScalarProperty Name="ClienteIdCliente" ColumnName="ClienteIdCliente" />
+          <ScalarProperty Name="FuncionarioIdFuncionario" ColumnName="FuncionarioIdFuncionario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Items">
+      <EntityTypeMapping TypeName="IsTypeOf(CinemaDB.Item)">
+        <MappingFragment StoreEntitySet="Items">
+          <ScalarProperty Name="IdItem" ColumnName="IdItem" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Preco" ColumnName="Preco" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Salas">
+      <EntityTypeMapping TypeName="IsTypeOf(CinemaDB.Sala)">
+        <MappingFragment StoreEntitySet="Salas">
+          <ScalarProperty Name="IdSala" ColumnName="IdSala" />
+          <ScalarProperty Name="NrSala" ColumnName="NrSala" />
+          <ScalarProperty Name="Comprimento" ColumnName="Comprimento" />
+          <ScalarProperty Name="Largura" ColumnName="Largura" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Filmes">
+      <EntityTypeMapping TypeName="IsTypeOf(CinemaDB.Filme)">
+        <MappingFragment StoreEntitySet="Filmes">
+          <ScalarProperty Name="IdFilme" ColumnName="IdFilme" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="LimIdade" ColumnName="LimIdade" />
+          <ScalarProperty Name="Duracao" ColumnName="Duracao" />
+          <ScalarProperty Name="Preco" ColumnName="Preco" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sessoes">
+      <EntityTypeMapping TypeName="IsTypeOf(CinemaDB.Sessao)">
+        <MappingFragment StoreEntitySet="Sessoes">
+          <ScalarProperty Name="IdSessao" ColumnName="IdSessao" />
+          <ScalarProperty Name="DataInicio" ColumnName="DataInicio" />
+          <ScalarProperty Name="SalaIdSala" ColumnName="SalaIdSala" />
+          <ScalarProperty Name="FilmeIdFilme" ColumnName="FilmeIdFilme" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lugares">
+      <EntityTypeMapping TypeName="IsTypeOf(CinemaDB.Lugar)">
+        <MappingFragment StoreEntitySet="Lugares">
+          <ScalarProperty Name="IdLugar" ColumnName="IdLugar" />
+          <ScalarProperty Name="X" ColumnName="X" />
+          <ScalarProperty Name="Y" ColumnName="Y" />
+          <ScalarProperty Name="SessaoIdSessao" ColumnName="SessaoIdSessao" />
+          <ScalarProperty Name="Ocupado" ColumnName="Ocupado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bilhetes">
+      <EntityTypeMapping TypeName="IsTypeOf(CinemaDB.Bilhete)">
+        <MappingFragment StoreEntitySet="Bilhetes">
+          <ScalarProperty Name="IdBilhete" ColumnName="IdBilhete" />
+          <ScalarProperty Name="X" ColumnName="X" />
+          <ScalarProperty Name="Y" ColumnName="Y" />
+          <ScalarProperty Name="SessaoIdSessao" ColumnName="SessaoIdSessao" />
+          <ScalarProperty Name="VendaIdVenda" ColumnName="VendaIdVenda" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ItemVenda" TypeName="CinemaDB.ItemVenda" StoreEntitySet="ItemVenda">
+      <EndProperty Name="Item">
+        <ScalarProperty Name="IdItem" ColumnName="Items_IdItem" />
+      </EndProperty>
+      <EndProperty Name="Venda">
+        <ScalarProperty Name="IdVenda" ColumnName="Vendas_IdVenda" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
